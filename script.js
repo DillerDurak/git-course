@@ -1,26 +1,28 @@
-// document.getElementById("count-el").innerText=6
 
 let count = 0
-let bestScore
+let saveEl = document.getElementById('save-el')
+let countEl = document.getElementById("count-el")
+let dasher
 
 function increment(){
-    console.log("Button was clicked!")
+    if (document.getElementById('error')){
+        document.getElementById('error').textContent = "Please tre again!"
+        return alert('Something went wrong, please try again!')
+    }
     count += 1
-    document.getElementById("count-el").innerText = count
+    countEl.textContent = count
 }
 
 
 function save(){
-    bestScore= count
-    alert("Your best score " + count + " was saved")
-}
-
-function reset(){
-    if (count>bestScore){
-        save()
+    if (count>0){
+        alert("Your best score " + count + " was saved")
+        dasher = count + ' - '
+        saveEl.textContent += dasher;
+        count = 0
+        countEl.textContent = 0
     }
-    alert("Your score is " + count + " and the best score is " + bestScore)
-    count = 0
-    document.getElementById("count-el").innerText = count
+    else{
+        return alert('Something went wrong, please try again!')
+    }
 }
-
